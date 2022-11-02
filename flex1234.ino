@@ -131,8 +131,39 @@ void dumpcalivalue(){
     Serial.println(buffer);
     }
 }
-
-
+int giveCharacter(int isThumbFolded ,int isIndexFolded, int isMiddleFolded, int isRingFolded, int isPinkyFolded ){
+    int gesture = 0;
+    if ((isThumbFolded == 1)&&(isIndexFolded==1)&&(isMiddleFolded==1)&&(isRingFolded==1)&&(isPinkyFolded==1)){
+      gesture = 0;
+    }
+  if ((isThumbFolded == 1)&&(isIndexFolded==0)&&(isMiddleFolded==1)&&(isRingFolded==1)&&(isPinkyFolded==1)){
+      gesture = 1;
+    }
+    if ((isThumbFolded == 1)&&(isIndexFolded==0)&&(isMiddleFolded==0)&&(isRingFolded==1)&&(isPinkyFolded==1)){
+      gesture = 2;
+    }
+    if ((isThumbFolded == 0)&&(isIndexFolded==0)&&(isMiddleFolded==0)&&(isRingFolded==1)&&(isPinkyFolded==1)){
+      gesture = 3;
+    }
+    if ((isThumbFolded == 1)&&(isIndexFolded==0)&&(isMiddleFolded==0)&&(isRingFolded==0)&&(isPinkyFolded==0)){
+      gesture = 4;
+    }
+    if ((isThumbFolded == 0)&&(isIndexFolded==0)&&(isMiddleFolded==0)&&(isRingFolded==0)&&(isPinkyFolded==0)){
+      gesture = 5;
+    }
+    if ((isThumbFolded == 1)&&(isIndexFolded==0)&&(isMiddleFolded==0)&&(isRingFolded==0)&&(isPinkyFolded==1)){
+      gesture = 6;
+    }
+    if ((isThumbFolded == 1)&&(isIndexFolded==0)&&(isMiddleFolded==0)&&(isRingFolded==1)&&(isPinkyFolded==0)){
+      gesture = 7;
+    }
+    if ((isThumbFolded == 1)&&(isIndexFolded==0)&&(isMiddleFolded==1)&&(isRingFolded==0)&&(isPinkyFolded==0)){
+      gesture = 8;
+    }
+    if ((isThumbFolded == 1)&&(isIndexFolded==1)&&(isMiddleFolded==0)&&(isRingFolded==0)&&(isPinkyFolded==0)){
+      gesture = 9;
+    }
+}
 
 void loop()
 {
@@ -164,7 +195,7 @@ void loop()
   Serial.println(buffer);
 
   //Recognising numbers 
-  if ((isThumbFolded == 1)&&(isIndexFolded==1)&&(isMiddleFolded==1)&&(isRingFolded==1)&&(isPinkyFolded==1)){
+  /*if ((isThumbFolded == 1)&&(isIndexFolded==1)&&(isMiddleFolded==1)&&(isRingFolded==1)&&(isPinkyFolded==1)){
       gesture = 0;
     }
   if ((isThumbFolded == 1)&&(isIndexFolded==0)&&(isMiddleFolded==1)&&(isRingFolded==1)&&(isPinkyFolded==1)){
@@ -193,7 +224,7 @@ void loop()
     }
     if ((isThumbFolded == 1)&&(isIndexFolded==1)&&(isMiddleFolded==0)&&(isRingFolded==0)&&(isPinkyFolded==0)){
       gesture = 9;
-    }
+    }*/
 
   delay(100);
   
