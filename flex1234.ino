@@ -33,6 +33,8 @@ struct flex_val {
   int min_val;
   int max_val;
   int cur_val;
+  int state;
+  int history[5];
 };
 
 struct flex_val fv[NUMFINGERS][2];
@@ -181,8 +183,25 @@ void loop()
   int isIndexFolded = isFingerFolded(INDEX, value_index);
   int isThumbFolded = isFingerFolded(THUMB, value_thumb);
 
-  int gesture = 0;
+  int index=0;
+  for (int i =0;i<5;i++){
+      fv[THUMB].history[index] = isThumbFolded;
+     
+      fv[INDEX].history[index] = isIndexFolded;
+      
+      fv[MIDDLE].history[index] = isMiddleFolded;
+      
+      fv[RING].history[index] =isRingFolded;
+      
+      fv[PINKY].history[index] = isPinkyFolded;
+      index = (index+1)%3;
+  }
   
+  void compute_state(){}
+
+  void generate_message(){}
+
+  void printthis(){}
   
   sprintf (buffer, "Thumb [%d], Index [%d], Middle[%d], Ring[%d], Pinky [%d]",
       isThumbFolded,
@@ -194,38 +213,8 @@ void loop()
   
   Serial.println(buffer);
 
-  //Recognising numbers 
-  /*if ((isThumbFolded == 1)&&(isIndexFolded==1)&&(isMiddleFolded==1)&&(isRingFolded==1)&&(isPinkyFolded==1)){
-      gesture = 0;
-    }
-  if ((isThumbFolded == 1)&&(isIndexFolded==0)&&(isMiddleFolded==1)&&(isRingFolded==1)&&(isPinkyFolded==1)){
-      gesture = 1;
-    }
-    if ((isThumbFolded == 1)&&(isIndexFolded==0)&&(isMiddleFolded==0)&&(isRingFolded==1)&&(isPinkyFolded==1)){
-      gesture = 2;
-    }
-    if ((isThumbFolded == 0)&&(isIndexFolded==0)&&(isMiddleFolded==0)&&(isRingFolded==1)&&(isPinkyFolded==1)){
-      gesture = 3;
-    }
-    if ((isThumbFolded == 1)&&(isIndexFolded==0)&&(isMiddleFolded==0)&&(isRingFolded==0)&&(isPinkyFolded==0)){
-      gesture = 4;
-    }
-    if ((isThumbFolded == 0)&&(isIndexFolded==0)&&(isMiddleFolded==0)&&(isRingFolded==0)&&(isPinkyFolded==0)){
-      gesture = 5;
-    }
-    if ((isThumbFolded == 1)&&(isIndexFolded==0)&&(isMiddleFolded==0)&&(isRingFolded==0)&&(isPinkyFolded==1)){
-      gesture = 6;
-    }
-    if ((isThumbFolded == 1)&&(isIndexFolded==0)&&(isMiddleFolded==0)&&(isRingFolded==1)&&(isPinkyFolded==0)){
-      gesture = 7;
-    }
-    if ((isThumbFolded == 1)&&(isIndexFolded==0)&&(isMiddleFolded==1)&&(isRingFolded==0)&&(isPinkyFolded==0)){
-      gesture = 8;
-    }
-    if ((isThumbFolded == 1)&&(isIndexFolded==1)&&(isMiddleFolded==0)&&(isRingFolded==0)&&(isPinkyFolded==0)){
-      gesture = 9;
-    }*/
+ 
 
-  delay(100);
+  delay(400);
   
 }
