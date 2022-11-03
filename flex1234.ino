@@ -186,11 +186,11 @@ void loop()
 
 	for (i = 0;  i < NUMFINGERS; i++)
 	{
-		fd[i].curr_val = values[i];
+		fd[i].curr_value = values[i];
 		fd[i].history[index] = isFingerFolded (i, values[i]);
 	}
 	index = (index + 1) % HISTORYLEN;
-	computer_state ();
+	compute_state ();
 	generate_message ();
 	if (debug)
 	{
@@ -231,7 +231,7 @@ void compute_state()
 /*Here, we convert the values recieved into binary. After conversion, we use the translate_to_digit function to translate the binary values into digits.*/
 void generate_message()
 {
-	int value = fd[THUMB].state<<4 + fd[INDEX].state<<3 + fd[MIDDLE].state<<2 + fd[RING].state<<1 + fd[PINKY].state
+	int value = fd[THUMB].state<<4 + fd[INDEX].state<<3 + fd[MIDDLE].state<<2 + fd[RING].state<<1 + fd[PINKY].state;
 	int answer = translate_to_digit(value);
 	if (1)
 	{
