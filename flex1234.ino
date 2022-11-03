@@ -197,11 +197,69 @@ void loop()
       index = (index+1)%3;
   }
   
-  void compute_state(){}
+  void compute_state(){
+   int sumt = fv[THUMB].history[0] + fv[THUMB].history[1]+fv[THUMB].history[2];
+    if (sumt==3){
+        fv[THUMB].state=1;
+      } 
+    else if(sumt==0){
+       fv[THUMB].state=0;
+      }
+    else{}
+    int sumi = fv[INDEX].history[0]+fv[INDEX].history[1]+fv[INDEX].history[2];
+    if (sumi==3){
+        fv[INDEX].state=1;
+      } 
+    else if(sumi==0){
+       fv[INDEX].state=0;
+      }
+    else{}
+    int summ = fv[MIDDLE].history[0]+fv[MIDDLE].history[1]+fv[MIDDLE].history[2];
+    if (summ==3){
+        fv[MIDDLE].state=1;
+      } 
+    else if(summ==0){
+       fv[MIDDLE].state=0;
+      }
+    else{}
+    int sumr = fv[RING].history[0]+fv[RING].history[1]+fv[RING].history[2];
+    if (sumr==3){
+        fv[RING].state=1;
+      } 
+    else if(sumr==0){
+       fv[RING].state=0;
+      }
+    else{}
+    int sump = fv[PINKY].history[0]+fv[PINKY].history[1]+fv[PINKY].history[2];
+    if (sump==3){
+        fv[PINKY].state=1;
+      } 
+    else if(sump==0){
+       fv[PINKY].state=0;
+      }
+    else{}
+  }
 
-  void generate_message(){}
+  void generate_message(){
+    int value = fv[THUMB].state<<4+fv[INDEX].state<<3+fv[MIDDLE].state<<2+fv[RING].state<<1+fv[PINKY].state
+    int answer = printthis(value);
+    sprintf(buffer, "%d", answer);
+    Serial.println(buffer);
+  }
 
-  void printthis(){}
+  void printthis(){
+      if (value == 31){return 0;}
+      if (value == 23){return 1;}
+      if (value == 19){return 2;}
+      if (value == 3){return 3;}
+      if (value == 16){return 4;}
+      if (value == 0){return 5;}
+      if (value == 17){return 6;}
+      if (value == 18){return 7;}
+      if (value == 20){return 8;}
+      if (value == 24){return 9;}
+  
+  }
   
   sprintf (buffer, "Thumb [%d], Index [%d], Middle[%d], Ring[%d], Pinky [%d]",
       isThumbFolded,
