@@ -242,16 +242,17 @@ void generate_message()
 /*this function takes binary value as input and returns the respective digit*/
 int  translate_to_digit (int value)
 {
-	if (value == 31){return 0;}
-	if (value == 23){return 1;}
-	if (value == 19){return 2;}
-	if (value == 3){return 3;}
-	if (value == 16){return 4;}
-	if (value == 0){return 5;}
-	if (value == 17){return 6;}
-	if (value == 18){return 7;}
-	if (value == 20){return 8;}
-	if (value == 24){return 9;}
-	return -1;  
+    if(fd[THUMB].state==1 && fd[INDEX].state==1 && fd[MIDDLE].state==1 && fd[RING].state==1 && fd[PINKY].state==1){return 0;}
+    if(fd[THUMB].state==1 && fd[INDEX].state==0 && fd[MIDDLE].state==1 && fd[RING].state==1 && fd[PINKY].state==1){return 1;}
+    if(fd[THUMB].state==1 && fd[INDEX].state==0 && fd[MIDDLE].state==0 && fd[RING].state==1 && fd[PINKY].state==1){return 2;}
+    if(fd[THUMB].state==0 && fd[INDEX].state==0 && fd[MIDDLE].state==0 && fd[RING].state==1 && fd[PINKY].state==1){return 3;}
+    if(fd[THUMB].state==1 && fd[INDEX].state==0 && fd[MIDDLE].state==0 && fd[RING].state==0 && fd[PINKY].state==0){return 4;}
+    if(fd[THUMB].state==0 && fd[INDEX].state==0 && fd[MIDDLE].state==0 && fd[RING].state==0 && fd[PINKY].state==0){return 5;}
+    if(fd[THUMB].state==1 && fd[INDEX].state==0 && fd[MIDDLE].state==0 && fd[RING].state==0 && fd[PINKY].state==1){return 6;}
+    if(fd[THUMB].state==1 && fd[INDEX].state==0 && fd[MIDDLE].state==0 && fd[RING].state==1 && fd[PINKY].state==0){return 7;}
+    if(fd[THUMB].state==1 && fd[INDEX].state==0 && fd[MIDDLE].state==1 && fd[RING].state==0 && fd[PINKY].state==0){return 8;}
+    if(fd[THUMB].state==1 && fd[INDEX].state==1 && fd[MIDDLE].state==0 && fd[RING].state==0 && fd[PINKY].state==0){return 9;}
+    
+    return -1;    
 }
 
