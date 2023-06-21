@@ -30,6 +30,6 @@ A glove that recognizes hand gestures and outputs the code language.
   * Check Serial Monitor for the results.
 
 ## Contributors
-* Tharun Jayaprasad 
-* Chitteshwari Satish 
-* Sneha Michelle 
+* Tharun Jayaprasad ( @Tharun-Jayaprasad)
+* Chitteshwari Satish ( @chitteshwari)
+* Sneha Michelle ( @Namslay26)
